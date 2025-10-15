@@ -59,18 +59,24 @@ export async function POST(req: Request) {
     });
 
     const schoolResponse = {
-  ...newSchool,
-  contact: newSchool.contact.toString(),
-}
+      ...newSchool,
+      contact: newSchool.contact.toString(),
+    };
 
     return NextResponse.json(
       { message: "School added successfully", school: schoolResponse },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error adding school:", error);
+
+    let message = "Internal Server Error";
+    if (error instanceof Error) {
+      message = error.message;
+    }
+
     return NextResponse.json(
-      { error: "Internal Server Error", details: error.message },
+      { error: "Internal Server Error", details: message },
       { status: 500 }
     );
   }

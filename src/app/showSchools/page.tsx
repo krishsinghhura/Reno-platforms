@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
 import Navbar from "../../components/NavBar";
-import { MapPin, Phone, Mail, Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 interface School {
   id: number;
@@ -11,8 +12,8 @@ interface School {
   city: string;
   state: string;
   image: string;
-  rating?: number; 
-  badge?: string; 
+  rating?: number;
+  badge?: string;
 }
 
 const sampleSchools: School[] = [
@@ -22,7 +23,8 @@ const sampleSchools: School[] = [
     address: "Hazratganj",
     city: "Lucknow",
     state: "Uttar Pradesh",
-    image: "https://uniformapp.in/admin_area/school_images/La_Martiniere_College_Lucknow_image1_7.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/La_Martiniere_College_Lucknow_image1_7.jpeg",
     rating: 4,
   },
   {
@@ -31,9 +33,10 @@ const sampleSchools: School[] = [
     address: "Gomti Nagar",
     city: "Lucknow",
     state: "Uttar Pradesh",
-    image: "https://uniformapp.in/admin_area/school_images/Jagran_Public_School_Lucknow_image1_13.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/Jagran_Public_School_Lucknow_image1_13.jpeg",
     rating: 4,
-    badge: ""
+    badge: "",
   },
   {
     id: 3,
@@ -41,9 +44,10 @@ const sampleSchools: School[] = [
     address: "Gomti Nagar",
     city: "Lucknow",
     state: "Uttar Pradesh",
-    image: "https://uniformapp.in/admin_area/school_images/Seth_Anandram_Jaipuria_Lucknow_image1_18.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/Seth_Anandram_Jaipuria_Lucknow_image1_18.jpeg",
     rating: 3,
-    badge: "Review Now!"
+    badge: "Review Now!",
   },
   {
     id: 4,
@@ -51,9 +55,10 @@ const sampleSchools: School[] = [
     address: "Gomti Nagar",
     city: "Lucknow",
     state: "Uttar Pradesh",
-    image: "https://uniformapp.in/admin_area/school_images/Lucknow_Public_School_Vinamra_Khand_Lucknow_image1_43.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/Lucknow_Public_School_Vinamra_Khand_Lucknow_image1_43.jpeg",
     rating: 4,
-    badge: ""
+    badge: "",
   },
   {
     id: 5,
@@ -61,9 +66,10 @@ const sampleSchools: School[] = [
     address: "Sector-105",
     city: "Noida",
     state: "Uttar Pradesh",
-    image: "https://uniformapp.in/admin_area/school_images/Fortune_World_School_Noida_image1_159.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/Fortune_World_School_Noida_image1_159.jpeg",
     rating: 4,
-    badge: ""
+    badge: "",
   },
   {
     id: 6,
@@ -71,9 +77,10 @@ const sampleSchools: School[] = [
     address: "Sector 70",
     city: "Noida",
     state: "Uttar Pradesh",
-    image: "https://uniformapp.in/admin_area/school_images/Sapphire_International_School_Noida_Noida_image1_193.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/Sapphire_International_School_Noida_Noida_image1_193.jpeg",
     rating: 5,
-    badge: "Review Now!"
+    badge: "Review Now!",
   },
   {
     id: 7,
@@ -81,9 +88,10 @@ const sampleSchools: School[] = [
     address: "Sector 50",
     city: "Gurgaon",
     state: "Haryana",
-    image: "https://uniformapp.in/admin_area/school_images/The_Paras_World_School_Gurgaon_image1_316.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/The_Paras_World_School_Gurgaon_image1_316.jpeg",
     rating: 3,
-    badge: "Review Now!"
+    badge: "Review Now!",
   },
   {
     id: 8,
@@ -91,12 +99,12 @@ const sampleSchools: School[] = [
     address: "Sohna Road",
     city: "Gurgaon",
     state: "Haryana",
-    image: "https://uniformapp.in/admin_area/school_images/Pathways_World_School_Aravali_Gurgaon_image1_1206.jpeg",
+    image:
+      "https://uniformapp.in/admin_area/school_images/Pathways_World_School_Aravali_Gurgaon_image1_1206.jpeg",
     rating: 4,
-    badge: ""
-  }
+    badge: "",
+  },
 ];
-
 
 const ShowSchools = () => {
   const [search, setSearch] = useState("");
@@ -114,9 +122,13 @@ const ShowSchools = () => {
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         {/* Header & Search */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">School Search</h1>
-          <p className="text-muted-foreground mb-4">Find the right school for your child.</p>
-          
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
+            School Search
+          </h1>
+          <p className="text-muted-foreground mb-4">
+            Find the right school for your child.
+          </p>
+
           <div className="flex justify-center gap-2 mb-4">
             <input
               type="text"
@@ -125,12 +137,19 @@ const ShowSchools = () => {
               onChange={(e) => setSearch(e.target.value)}
               className="px-4 py-2 border border-border rounded-l-lg w-64 focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <button className="bg-green-500 text-primary-foreground px-4 py-2 rounded-r-lg hover:opacity-90 transition">Search</button>
+            <button className="bg-green-500 text-primary-foreground px-4 py-2 rounded-r-lg hover:opacity-90 transition">
+              Search
+            </button>
           </div>
 
           {/* Filters */}
           <div className="flex flex-wrap justify-center gap-3">
-            {["Choose City", "Choose Board", "Choose Type", "Hostel Facility"].map((f) => (
+            {[
+              "Choose City",
+              "Choose Board",
+              "Choose Type",
+              "Hostel Facility",
+            ].map((f) => (
               <button
                 key={f}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
@@ -149,10 +168,11 @@ const ShowSchools = () => {
               className="group bg-card rounded-xl overflow-hidden border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative aspect-video overflow-hidden bg-muted">
-                <img
+                <Image
                   src={school.image}
                   alt={school.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 {school.badge && (
                   <span className="absolute top-2 left-2 bg-yellow-400 text-black text-xs px-2 py-1 rounded-full font-semibold">
@@ -170,7 +190,11 @@ const ShowSchools = () => {
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-4 h-4 ${i < (school.rating || 0) ? "text-yellow-400" : "text-gray-300"}`}
+                        className={`w-4 h-4 ${
+                          i < (school.rating || 0)
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                        }`}
                       />
                     ))}
                   </div>
@@ -180,11 +204,16 @@ const ShowSchools = () => {
                 <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
                   {school.name}
                 </h3>
-                <p className="text-muted-foreground text-sm">{school.address}, {school.state}</p>
+                <p className="text-muted-foreground text-sm">
+                  {school.address}, {school.state}
+                </p>
 
                 <div className="flex flex-col gap-1 mt-3 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4 text-primary" /> <span>{school.city}, {school.state}</span>
+                    <MapPin className="w-4 h-4 text-primary" />{" "}
+                    <span>
+                      {school.city}, {school.state}
+                    </span>
                   </div>
                 </div>
 
