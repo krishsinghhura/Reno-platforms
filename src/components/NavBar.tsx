@@ -39,9 +39,9 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/showSchool"
+              href="/showSchools"
               className={`px-5 py-2 rounded-full font-medium transition-all duration-200 transform ${
-                isActive("/showSchool")
+                isActive("/showSchools")
                   ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white scale-105 shadow-xl"
                   : "bg-white/50 text-gray-900 hover:bg-white/70 hover:scale-105"
               }`}
