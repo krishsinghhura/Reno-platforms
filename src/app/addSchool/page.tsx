@@ -331,17 +331,17 @@ const AddSchool = () => {
                     control={control}
                     defaultValue={null}
                     render={({ field }) => (
-                      <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-white hover:bg-gray-100 transition-all">
+                      <label className="relative flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-white hover:bg-gray-100 transition-all">
                         {imagePreview ? (
                           <Image
                             src={imagePreview}
                             alt="Preview"
+                            fill
                             className="rounded-lg"
-                            fill 
                             style={{ objectFit: "cover" }}
                           />
                         ) : (
-                          <div className="flex flex-col items-center justify-center py-6">
+                          <div className="flex flex-col items-center justify-center py-6 z-10">
                             <Upload className="w-12 h-12 text-gray-400 mb-2" />
                             <p className="text-sm text-gray-400">
                               Click to upload image
@@ -354,7 +354,7 @@ const AddSchool = () => {
                         <input
                           type="file"
                           accept="image/*"
-                          className="hidden"
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                           onChange={(e) => {
                             const file = e.target.files?.[0];
                             if (file) {
